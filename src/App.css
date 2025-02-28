@@ -36,3 +36,113 @@
     transform: rotate(360deg);
   }
 }
+
+.main {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  justify-content: flex-end;
+  /* padding: 3rem; */
+  padding-left: 8rem;
+  padding-right: 8rem;
+  /* padding-bottom: 2rem; */
+  height: 100vh;
+  /* min-height: 100vh; */
+  /* z-index: 1; */
+  position: relative;
+}
+
+.preloadedBackground {
+  height: 100vh;
+  width: 100vw;
+  position: fixed;
+  /* background: url('../public/purple3d.jpg'); */
+  /* background-size: 100% 100vh; */
+  /* z-index: -1; */
+}
+
+.fullscreen {
+  height: 100vh;
+  width: 100%;
+}
+
+.inputContainer {
+  padding-top: 12rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-end;
+  width: 100%;
+  height: 100%;
+}
+
+.mainInput {
+  box-sizing: border-box;
+  width: 100%;
+  height: 4rem;
+  /* border: none; */
+  border: 3px solid #8b6cc2;
+  border-radius: 0.5rem;
+  /* outline: none; */
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: hsl(262, 42%, 62%);
+  background: #fff8e8;
+  text-align: center;
+  /* text-shadow: 0 0 0.3rem #000; */
+  padding-right: 8rem;
+}
+
+.glass {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-end;
+  padding: 2rem;
+  box-sizing: border-box;
+  width: 100%;
+  height: 100%;
+  /* From https://css.glass */
+  background: rgba(255, 248, 232, 0.33);
+  border-radius: 16px;
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(1.9px);
+  -webkit-backdrop-filter: blur(1.9px);
+}
+
+.input:focus {
+  /* border-color: #eaa7ff; */
+  border-color: black;
+}
+
+.buttonContainer {
+  position: relative;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  width: 100%;
+}
+
+.inputButton {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  cursor: pointer;
+  background: transparent;
+  position: absolute;
+  font-size: 1rem;
+  font-weight: 600;
+  color: hsl(262, 42%, 62%);
+  border: 2px solid #eaa7ff;
+  border-radius: 0.5rem;
+  height: 3rem;
+  width: 7rem;
+  top: -3.5rem;
+  right: 0.5rem;
+}
+
+.mainInput::placeholder {
+  /* color: #fff; */
+  color: hsl(262, 42%, 62%);
+}
