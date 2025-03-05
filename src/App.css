@@ -1,3 +1,7 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
 .App {
   text-align: center;
 }
@@ -59,7 +63,7 @@
   position: fixed;
   /* background: url('../public/purple3d.jpg'); */
   /* background-size: 100% 100vh; */
-  /* z-index: -1; */
+  z-index: -1;
 }
 
 .fullscreen {
@@ -68,7 +72,7 @@
 }
 
 .inputContainer {
-  padding-top: 12rem;
+  padding-top: 8rem;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -109,6 +113,41 @@
   box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
   backdrop-filter: blur(1.9px);
   -webkit-backdrop-filter: blur(1.9px);
+  border: 1px solid rgba(255, 255, 255, 0.6);
+}
+
+.profileCircle {
+  /* From https://css.glass */
+  background: rgba(255, 248, 232, 0.33);
+  /* border-radius: 25%; */
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(1.9px);
+  -webkit-backdrop-filter: blur(1.9px);
+  border: 1px solid rgba(255, 255, 255, 0.6);
+}
+
+.transparentButton {
+  background: rgba(255, 248, 232, 0.33);
+  border-radius: 4px;
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(1.9px);
+  -webkit-backdrop-filter: blur(1.9px);
+  border: 1px solid rgba(255, 255, 255, 0.6);
+  padding: 3px;
+  /* border-radius: 50%; */
+  /* background: transparent; */
+  /* border: none; */
+}
+
+.rounded {
+  border-radius: 50%;
+}
+
+.userEmail {
+  padding: 8px 15px;
+  font-size: 1rem;
+  font-weight: 600;
+  color: hsl(262, 53%, 54%);
 }
 
 .input:focus {
@@ -133,7 +172,7 @@
   position: absolute;
   font-size: 1rem;
   font-weight: 600;
-  color: hsl(262, 42%, 62%);
+  color: hsl(262, 53%, 54%);
   border: 2px solid #eaa7ff;
   border-radius: 0.5rem;
   height: 3rem;
@@ -144,5 +183,83 @@
 
 .mainInput::placeholder {
   /* color: #fff; */
-  color: hsl(262, 42%, 62%);
+  color: hsl(262, 53%, 54%);
+}
+
+.container {
+  /* max-width: 1024px; */
+  /* margin: auto; */
+  /* height: 500px;
+  padding: 50px; */
+  position: relative;
+  padding-top: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+}
+.dropdown {
+  /* min-width: 100px; */
+}
+.dropdown-btn {
+  font-size: 16px;
+  /* background: white; */
+  /* border: 1px solid black; */
+  /* border-radius: 4px; */
+  /* height: 40px; */
+  width: auto;
+  /* padding: 0 30px; */
+  cursor: pointer;
+}
+.dropdown-btn:hover,
+.dropdown-btn:focus {
+  /* background: #f2f2f2; */
+  box-shadow: rgba(255, 255, 255, 0.5) 0px 39px 56px -36px inset,
+    rgba(199, 128, 255, 0.3) 0px 1px 4px 0px inset,
+    rgba(199, 128, 255, 0.3) 0px -82px 68px -64px inset,
+    rgba(199, 128, 255, 0.3) 0px 98px 100px -48px inset,
+    rgba(199, 128, 255, 0.3) 0px 4px 18px 0px inset,
+    rgba(199, 128, 255, 0.2) 0px 1px 40px 0px inset,
+    rgba(199, 128, 255, 0.2) 0px 1px 40px 0px inset;
+}
+
+.dropdown-items {
+  /* box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23); */
+
+  /* width: 200px; */
+  position: absolute;
+  right: 0;
+  margin-top: 5px;
+  display: flex;
+  flex-direction: column;
+  border: 1px solid black;
+  border: 1px solid black;
+  padding: 8px 15px;
+  border-radius: 4px;
+  justify-content: flex-start;
+  /* From https://css.glass */
+  background: rgba(255, 248, 232, 0.33);
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(1.9px);
+  -webkit-backdrop-filter: blur(1.9px);
+  border: 1px solid rgba(255, 255, 255, 0.6);
+}
+.dropdown-item {
+  padding-top: 0px;
+  padding-bottom: 0px;
+  cursor: pointer;
+}
+.dropdown-item:not(first-child) {
+  padding-top: 7px;
+  padding-bottom: 7px;
+}
+.dropdown-item:not(last-child) {
+  padding-top: 7px;
+  padding-bottom: 7px;
+}
+
+.isVisible {
+  visibility: visible;
+}
+.isHidden {
+  visibility: hidden;
 }
