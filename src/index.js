@@ -8,7 +8,8 @@ import { AuthProvider } from 'react-oidc-context';
 const cognitoAuthConfig = {
   authority: 'https://cognito-idp.us-east-1.amazonaws.com/us-east-1_6e0Jpb8aZ',
   client_id: '3tu012q845tpuispds9jo24usf',
-  redirect_uri: 'http://localhost:3000',
+  // redirect_uri: 'http://localhost:3000',
+  redirect_uri: 'https://gifterapp.click',
   response_type: 'code',
   scope: 'phone openid email',
 };
