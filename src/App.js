@@ -72,7 +72,8 @@ function App() {
   const signOutRedirect = () => {
     const clientId = '3tu012q845tpuispds9jo24usf';
     const logoutUri = 'https://gifterapp.click';
-    const cognitoDomain = 'https://us-east-1_6e0Jpb8aZ';
+    const cognitoDomain =
+      'https://us-east-16e0jpb8az.auth.us-east-1.amazoncognito.com';
     window.location.href = `${cognitoDomain}/logout?client_id=${clientId}&logout_uri=${encodeURIComponent(
       logoutUri
     )}`;
