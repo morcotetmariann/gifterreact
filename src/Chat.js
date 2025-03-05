@@ -73,6 +73,7 @@ function Chat() {
   // const [agentResponse, setAgentResponse] = useState(mockResponse);
   const [agentResponse, setAgentResponse] = useState([]);
   const [width, height] = useSizeComponents();
+  const [disabled, setDisabled] = useState(false);
   const scaleLottie = 0.5;
   const defaultOptions = {
     loop: true,
@@ -86,8 +87,9 @@ function Chat() {
   const n8nCall = (e) => {
     console.log('getGptResponse', e);
     console.log(e.target[0].value);
-    setInputMessage('');
+
     setLoading(true);
+    setDisabled(true);
     fetch(
       'https://trialplanner.app.n8n.cloud/webhook/b55a7a6b-e605-424f-af6a-c5429f6e045a',
       {
@@ -110,8 +112,10 @@ function Chat() {
         console.log('got data', data);
         setAgentResponse(data);
         setLoading(false);
+        setInputMessage('');
       })
       .catch((err) => {
+        setInputMessage('');
         setLoading(false);
         console.log(err);
       });
@@ -174,6 +178,7 @@ function Chat() {
           placeholder="Write the description of a friend or pet friend here"
           value={inputMessage}
           onChange={(ev) => setInputMessage(ev.target.value)}
+          disabled={disabled}
         ></input>
         <div class="buttonContainer">
           <button type="submit" class="inputButton">
