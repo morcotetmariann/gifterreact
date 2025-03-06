@@ -46,8 +46,8 @@ function Home() {
   return (
     <div class="spline-container">
       <img
-        // src="https://amplify-amplifyf77a3d68a4004-staging-122152-deployment.s3.us-east-1.amazonaws.com/images/Purple3dicons_compressed80_compressed95.jpeg"
-        src={ScenePreviewJPEG}
+        src="https://amplify-amplifyf77a3d68a4004-staging-122152-deployment.s3.us-east-1.amazonaws.com/images/Purple3dicons_compressed80_compressed95.jpeg"
+        // src={ScenePreviewJPEG}
         alt="Loading..."
         class="placeholder"
       ></img>
