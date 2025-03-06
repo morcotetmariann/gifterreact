@@ -2,6 +2,10 @@
 @tailwind components;
 @tailwind utilities;
 
+.testNoClick {
+  pointer-events: none;
+}
+
 .App {
   text-align: center;
 }
@@ -210,6 +214,10 @@
   /* color: #505050; */
 }
 
+.mainInput:disabled {
+  background-color: lightgray;
+}
+
 .container {
   /* max-width: 1024px; */
   /* margin: auto; */
@@ -325,4 +333,44 @@
 }
 .box span:nth-child(5) {
   animation-delay: 0.4s;
+}
+
+@media only screen and (max-width: 600px) {
+  .main {
+    display: flex;
+    justify-content: flex-start;
+    padding: 1rem;
+  }
+
+  .mainInput {
+    padding-right: 55px;
+    font-size: 1rem;
+    font-weight: 600;
+  }
+
+  .container {
+    padding: 0;
+  }
+
+  .inputContainer {
+    align-self: flex-end;
+  }
+
+  .glass {
+    margin: 0;
+    padding: 5px;
+    padding-bottom: 8px;
+  }
+
+  .inputButton {
+    padding: 0;
+    padding-left: 3px;
+    padding-right: 5px;
+    font-size: 0;
+    width: auto;
+  }
+  .contentContainer {
+    z-index: 10;
+    height: 100%;
+  }
 }

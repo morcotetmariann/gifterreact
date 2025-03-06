@@ -2,6 +2,7 @@ import { useState, useLayoutEffect, useMemo } from 'react';
 import { GrSend } from 'react-icons/gr';
 import Lottie from 'react-lottie';
 import animationData from './lotties/gift-on-the-way.json';
+import HeroSection from './HeroSection';
 import './responseSection.css';
 
 export function useSizeComponents(ref) {
@@ -69,10 +70,11 @@ const mockResponse = [
   },
 ];
 
-function Chat() {
+function Chat(props) {
+  const { auth } = props;
+  console.log('AUTH', auth);
   const [inputMessage, setInputMessage] = useState('');
   const [loading, setLoading] = useState(false);
-  // const [agentResponse, setAgentResponse] = useState(mockResponse);
   const [agentResponse, setAgentResponse] = useState([]);
   const [width, height] = useSizeComponents();
   const [disabled, setDisabled] = useState(false);
@@ -81,9 +83,6 @@ function Chat() {
     loop: true,
     autoplay: true,
     animationData: animationData,
-    // rendererSettings: {
-    //   preserveAspectRatio: 'xMidYMid slice',
-    // },
   };
 
   const n8nCall = (e) => {
@@ -115,21 +114,25 @@ function Chat() {
         setAgentResponse(data);
         setLoading(false);
         setInputMessage('');
+        setDisabled(false);
       })
       .catch((err) => {
         setInputMessage('');
         setLoading(false);
+        setDisabled(false);
         console.log(err);
       });
   };
 
   const control = useMemo(() => {
     if (!width) return null;
+    if (width < 600) return <Lottie key={width} options={defaultOptions} />;
     const xMidYMid = 0.5;
     const sizeComponent = {
       width: width * scaleLottie,
       height: width * scaleLottie * xMidYMid,
     };
+
     return <Lottie key={width} options={defaultOptions} {...sizeComponent} />;
   }, [width]);
 
@@ -143,48 +146,39 @@ function Chat() {
     >
       <div className="glass">
         <div class="contentContainer">
-          {
-            loading && control
-            // <div style={{ maxHeight: '100%' }}>
-            //   <Lottie options={defaultOptions} />
-            // </div>
-          }
-          {!loading && agentResponse && (
-            <div class="responseSectionContainer">
-              {agentResponse.map((category) => {
-                return (
-                  <div class="response-container">
-                    <h1 class="response-title">
-                      {capitalize(category.category)}
-                    </h1>
-                    {category.ideas.map((idea) => {
-                      return (
-                        <p class="response-subtitle">{capitalize(idea)}</p>
-                      );
-                    })}
-                  </div>
-                );
-              })}
-            </div>
+          {auth.isAuthenticated ? (
+            <>
+              {loading && control}
+              {!loading && agentResponse && (
+                <div class="responseSectionContainer">
+                  {agentResponse.map((category) => {
+                    return (
+                      <div class="response-container">
+                        <h1 class="response-title">
+                          {capitalize(category.category)}
+                        </h1>
+                        {category.ideas.map((idea) => {
+                          return (
+                            <p class="response-subtitle">{capitalize(idea)}</p>
+                          );
+                        })}
+                      </div>
+                    );
+                  })}
+                </div>
+              )}
+            </>
+          ) : (
+            <HeroSection></HeroSection>
           )}
         </div>
-
-        {/* <div style={{ position: 'relative' }}>
-          <div class="box">
-            <span>J</span>
-            <span>U</span>
-            <span>M</span>
-            <span>P</span>
-            <span>!</span>
-          </div>
-        </div> */}
         <input
           class="mainInput"
           type="text"
-          placeholder="Write the description of a friend or pet friend here"
+          placeholder="Tell me something about your friend"
           value={inputMessage}
           onChange={(ev) => setInputMessage(ev.target.value)}
-          disabled={disabled}
+          disabled={disabled || !auth.isAuthenticated}
         ></input>
         <div class="buttonContainer">
           <button type="submit" class="inputButton">

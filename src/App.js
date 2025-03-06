@@ -122,52 +122,21 @@ function App() {
                     <button id="paylikePopup" onClick={() => pay()}>
                       Pay
                     </button>
-                    {/* <div
-                    className="dropdown__link"
-                    onClick={() => handleSetDropdownValue('value 02')}
-                  >
-                    Item 02
-                  </div> */}
                   </div>
                   <div className="dropdown-item">
                     <button onClick={() => signOutRedirect()}>Sign out</button>
-                    {/* <div
-                    className="dropdown__link"
-                    onClick={() => handleSetDropdownValue('value 02')}
-                  >
-                    Item 02
-                  </div> */}
                   </div>
                 </>
               ) : (
-                <>
-                  <div className="dropdown-item">
-                    <button onClick={() => auth.signinRedirect()}>
-                      Sign in
-                    </button>
-                    {/* <div
-                    className="dropdown__link"
-                    onClick={() => handleSetDropdownValue('value 01')}
-                  >
-                    Item 01
-                  </div> */}
-                  </div>
-                  <div className="dropdown-item">
-                    <button onClick={() => signOutRedirect()}>Sign out</button>
-                    {/* <div
-                    className="dropdown__link"
-                    onClick={() => handleSetDropdownValue('value 02')}
-                  >
-                    Item 02
-                  </div> */}
-                  </div>
-                </>
+                <div className="dropdown-item">
+                  <button onClick={() => auth.signinRedirect()}>Sign in</button>
+                </div>
               )}
             </div>
           </div>
         </div>
 
-        <Chat></Chat>
+        <Chat auth={auth}></Chat>
       </div>
 
       {/* <Chat></Chat> */}
