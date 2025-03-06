@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { useEffect, useRef } from 'react';
 import Spline from '@splinetool/react-spline';
+import ScenePreview from './Purple3dicons.jpg';
 
 function useWindowSize() {
   // Initialize state with undefined width/height so server and client renders match
@@ -40,7 +41,8 @@ function Home() {
     console.log('useEffect', size);
   }, [size]);
   return (
-    <div class="">
+    <div class="spline-container">
+      <img src={ScenePreview} alt="Loading..." class="placeholder"></img>
       <Spline
         class="preloadedBackground"
         scene="https://prod.spline.design/AURdrtpb7BhwChk4/scene.splinecode"

@@ -2,7 +2,6 @@ import { useState, useLayoutEffect, useMemo } from 'react';
 import { GrSend } from 'react-icons/gr';
 import Lottie from 'react-lottie';
 import animationData from './lotties/gift-on-the-way.json';
-import HeroSection from './HeroSection';
 import './responseSection.css';
 
 export function useSizeComponents(ref) {
@@ -22,6 +21,9 @@ export function useSizeComponents(ref) {
   }, []);
 
   return size;
+}
+function capitalize(s) {
+  return String(s[0]).toUpperCase() + String(s).slice(1);
 }
 
 const mockResponse = [
@@ -152,9 +154,13 @@ function Chat() {
               {agentResponse.map((category) => {
                 return (
                   <div class="response-container">
-                    <h1 class="response-title">{category.category}</h1>
+                    <h1 class="response-title">
+                      {capitalize(category.category)}
+                    </h1>
                     {category.ideas.map((idea) => {
-                      return <p class="response-subtitle">{idea}</p>;
+                      return (
+                        <p class="response-subtitle">{capitalize(idea)}</p>
+                      );
                     })}
                   </div>
                 );
